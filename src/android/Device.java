@@ -41,6 +41,7 @@ public class Device extends CordovaPlugin {
     public static String cordovaVersion = "dev";           // Cordova version
     public static String platform;                          // Device OS
     public static String uuid;                              // Device UUID
+    public static String imei;                              // Device IMEI
 
     private static final String ANDROID_PLATFORM = "Android";
     private static final String AMAZON_PLATFORM = "amazon-fireos";
@@ -62,6 +63,7 @@ public class Device extends CordovaPlugin {
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
         Device.uuid = getUuid();
+        Device.imei = getImei();
     }
 
     /**
@@ -83,7 +85,7 @@ public class Device extends CordovaPlugin {
             r.put("manufacturer", this.getManufacturer());
             r.put("isVirtual", this.isVirtual());
             r.put("serial", this.getSerialNumber());
-            r.put("imei", this.imei());
+            r.put("imei", this.getImei());
             callbackContext.success(r);
         }
         else {
@@ -97,7 +99,7 @@ public class Device extends CordovaPlugin {
     //--------------------------------------------------------------------------
 
     //imei
-    private String imei() {
+    private String getImei() {
 //      String  Imei = ((TelephonyManager) cordova.getActivity().getSystemService(cordova.getActivity().TELEPHONY_SERVICE))
 //              .getDeviceId();
 //      return Imei;
