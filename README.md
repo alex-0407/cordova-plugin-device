@@ -2,6 +2,8 @@ support imei:
 
 1、node_modules->@ionic-native->device->index.d.ts
 
+```
+
 import { IonicNativePlugin } from '@ionic-native/core';
 /**
  * @name Device
@@ -42,4 +44,6 @@ export declare class Device extends IonicNativePlugin {
     /** Get the device hardware serial number. */
     serial: string;
 }
+
+```
 
